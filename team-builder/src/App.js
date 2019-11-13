@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import React, {useState} from 'react';
+import {BrowserRouter as Router} from 'react-router-dom'
 import Landing from './components/Landing';
 import MemberForm from './components/MemberForm';
-import Team from './components/Team';
+import TeamDisplay from './components/TeamDisplay';
 import './App.css';
+// import { Card } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -27,9 +28,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Route exact path='/' component={Landing} />
-        <Route path='/form' component={MemberForm} />
-        <Route path='/team' component={Team} />
+        <Landing />
+        {/* <Route exact path='/' component={Landing} /> */}
+        {/* <Route path='/form' component={MemberForm} /> */}
+        <MemberForm addNewMember={addNewMember} />
+        <TeamDisplay team={team} />
       </div>
     </Router>
   );

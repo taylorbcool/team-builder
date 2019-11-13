@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { Card, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const MemberForm = props => {
     const [teamMember, setTeamMember] = useState({
@@ -19,9 +18,9 @@ const MemberForm = props => {
     }
 
     return(
-        <Card>
+        <Card className='container add-space'>
             <h2 className='display-4'>Add New Team Member</h2>
-            <Form onSubmit={submitForm}>
+            <Form className='form' onSubmit={submitForm}>
                 <FormGroup>
                     <Label for='name'>Name</Label>
                     <Input
