@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Landing from './components/Landing';
+import MemberForm from './components/MemberForm';
+import Team from './components/Team';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [team, setTeam] = useState([
+    {
+      name: 'Taylor',
+      email: 'taycool@gmail.com',
+      role: 'Developer'
+    }
+  ])
+
+  const addNewMember = member => {
+    const newMember = {
+      name: member.name,
+      email: member.email,
+      role: member.role
+    };
+    setTeam([...team, newMember])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Route exact path='/' component={Landing} />
+        <Route path='/form' component={MemberForm} />
+        <Route path='/team' component={Team} />
+      </div>
+    </Router>
   );
 }
 
